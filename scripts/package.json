@@ -1,0 +1,9 @@
+{
+  "name": "persuasion-audit-scripts",
+  "private": true,
+  "type": "module",
+  "description": "Screenshot-capture dependency for the persuasion-audit skill. Not published, not part of any deployed runtime.",
+  "dependencies": {
+    "playwright": "^1.47.0"
+  }
+}
