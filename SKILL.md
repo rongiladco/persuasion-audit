@@ -116,6 +116,10 @@ Go principle by principle, per `references/cialdini-principles.md`. For each of 
 - Rate it **Strong / Moderate / Weak / Absent** — or **Not applicable** with a one-line reason, if
   the principle genuinely doesn't fit this product (e.g. Scarcity for an enterprise tool with no
   inventory or time-bound offer concept). Don't force a rating onto a principle that doesn't apply.
+  **Whenever the rating is Absent, say briefly why** if there's a structural reason (a pre-launch
+  product has no reviews yet, so Social Proof being Absent isn't a design failure — it's a fact
+  about where the product is right now). A bare "Absent" with no context reads as an incomplete
+  audit, not an honest finding about the product.
 - List concrete opportunities — specific, actionable, tied to a real screen/element, not generic
   advice ("add more social proof" is not a finding; "the pricing page has no testimonials or
   customer logos near the CTA, unlike the homepage which has three" is).
@@ -131,57 +135,104 @@ Go principle by principle, per `references/cialdini-principles.md`. For each of 
 
 ```markdown
 ## [Principle name]
+*[One-line plain-language explainer — from that principle's "Plain-language" line in
+references/cialdini-principles.md, not reworded on the fly]*
 
-**Rating:** Strong | Moderate | Weak | Absent | Not applicable (+ one-line reason if N/A)
+**Rating:** Strong | Moderate | Weak | Absent | Not applicable (+ one-line reason if N/A or Absent)
 
-**What's there:** [Concrete description of current implementation, with evidence]
+**What's Good:** [Concrete description of current implementation, with evidence — omit this field
+entirely, don't write "nothing" under it, if the rating is Absent/Weak with nothing genuinely
+positive to point to]
 ![Short description of what's shown](./screenshots/<id>.png)
 
-**Opportunities:**
+**What to Change:**
 - [Specific, actionable opportunity tied to a real screen/element]
 - ...
 
 **⚠️ Dark-pattern risk:** [Only included when relevant — names the specific risk, per the
 reference file's line for this principle, and whether it's a risk in something already present or
-something to avoid in an opportunity being suggested]
+something to avoid in a "What to Change" suggestion]
 ```
 
 Repeat for all 7 principles, in this fixed order: Reciprocity, Commitment & Consistency, Social
 Proof, Liking, Authority, Scarcity, Unity — the same order every run, so reports are comparable
 across products/over time.
 
-## Step 4: Document summary
+**On the field names:** "What's Good" and "What to Change" (not "What's there" / "Opportunities")
+— tested with a real product owner (2026-09-17) who read an early report and found the original
+labels flat/clinical. The principle names themselves (Reciprocity, Authority, Unity...) stay as the
+real terms of art rather than being renamed into softer language — a reader who already knows the
+framework should recognize it immediately, and the plain-language line right under each header
+covers the reader who doesn't, without diluting the vocabulary itself.
 
-At the end:
+## Step 4: Compute an overall score
 
-```markdown
-## Summary
+Once all 7 principles are rated (Step 2 done), compute a single headline number before assembling
+the final document — this is a late step in the *workflow*, but it appears near the *top* of the
+final document (see Step 5), because a reader wants to know where things stand before reading seven
+sections to find out.
 
-| Principle | Rating |
-|---|---|
-| Reciprocity | ... |
-| Commitment & Consistency | ... |
-| Social Proof | ... |
-| Liking | ... |
-| Authority | ... |
-| Scarcity | ... |
-| Unity | ... |
+Map each rating to points: **Strong = 3, Moderate = 2, Weak = 1, Absent = 0.** Leave out any
+principle rated **Not applicable** from both the sum and the count — it was never in play, so it
+shouldn't drag the score down, and shouldn't be counted in the denominator either.
 
-### 3 Highest-Value Opportunities
-1. ...
-2. ...
-3. ...
-
-### Dark-Pattern Risks Flagged
-[List every risk flagged above in one place, or state plainly "none flagged" — this is the one
-section that must never be silently omitted even when empty, since its absence should mean
-"checked, none found," not "not checked."]
+```
+score_out_of_10 = round( (sum of points across scored principles) / (3 × number of scored principles) × 10 )
 ```
 
-The 3 chosen opportunities favor principles rated Weak/Absent on products where that principle is
-naturally dominant for the product type (Group B) — but a single high-severity dark-pattern risk
-belongs in the top 3 regardless of effort, the same logic `cro-quick-wins` uses for urgent CRO
-fixes.
+State the formula's inputs plainly wherever the score appears (e.g. "6/10 — based on 6 scored
+principles, 1 marked Not applicable") so it's never a mystery number — this is the same honesty
+standard as every other number in this skill (see "Honesty and guardrails" below): never invent a
+score from a gut feeling, only from the ratings already justified in Step 2.
+
+Alongside the number, write **one or two plain-language sentences** naming the single biggest
+strength and the single biggest gap — a condensed preview of what "3 Highest-Value Opportunities"
+(Step 5) will unpack in full, not a duplicate of it.
+
+## Step 5: Assemble the final document
+
+The order the sections are *written about* (Steps 2–4) is not the order they *appear in the
+document*. Assemble the final markdown in this order:
+
+1. **Title** — `# Persuasion Audit — <product name>`
+2. **Overall score**, right under the title — the Step 4 number + one-line verdict. This is the
+   first substantive thing a reader sees, on purpose.
+3. **The 7 principle sections**, per Step 3, in the fixed order.
+4. **Summary** — same content as before, now positioned after the principle sections rather than
+   duplicating the score card:
+   ```markdown
+   ## Summary
+
+   | Principle | Rating |
+   |---|---|
+   | Reciprocity | ... |
+   | Commitment & Consistency | ... |
+   | Social Proof | ... |
+   | Liking | ... |
+   | Authority | ... |
+   | Scarcity | ... |
+   | Unity | ... |
+
+   ### 3 Highest-Value Opportunities
+   1. ...
+   2. ...
+   3. ...
+
+   ### Dark-Pattern Risks Flagged
+   [List every risk flagged above in one place, or state plainly "none flagged" — this is the one
+   section that must never be silently omitted even when empty, since its absence should mean
+   "checked, none found," not "not checked."]
+   ```
+   The 3 chosen opportunities favor principles rated Weak/Absent on products where that principle
+   is naturally dominant for the product type (Group B) — but a single high-severity dark-pattern
+   risk belongs in the top 3 regardless of effort, the same logic `cro-quick-wins` uses for urgent
+   CRO fixes.
+5. **Methodology** — moved to the very end, deliberately (feedback from a real report reader,
+   2026-09-17: technical/process details read as noise before someone has even seen the findings).
+   Everything that used to sit at the top as a metadata block goes here instead: date, framework
+   citation, product type / scope from Step 0, source track (A or B) and what was actually
+   captured/provided, output format. Nothing here is new information — it's the same facts, just no
+   longer the first thing a reader has to get through.
 
 ## Honesty and guardrails
 

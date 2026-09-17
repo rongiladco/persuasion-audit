@@ -7,7 +7,18 @@ bloat, same split as `cro-quick-wins/references/cro-principles.md`.
 Source: Robert Cialdini, *Influence: The Psychology of Persuasion* (the original six) and
 *Pre-Suasion* (Unity, added later as a seventh). Six of these are about triggering a decision;
 Unity is about identity — "we," not "like" — which is why it's listed last and treated separately
-in the report even though it's structurally a peer of the other six.
+in the report even though it's structurally a peer of the other six. Further reading, specifically
+on applying these principles to digital products: Jakob Nielsen, ["Cialdini's Influence &
+Persuasion Principles Applied to UX"](https://jakobnielsenphd.substack.com/p/cialdini-influence-persuasion) —
+its evolutionary-mismatch framing (these reflexes evolved for small, face-to-face communities and
+now run on a planet of strangers at scale) and its genuine-vs-counterfeit distinction both shaped
+how this file separates a legitimate finding from a dark pattern.
+
+**A plain-language line is required for every principle in the report** (see each principle's
+"Plain-language" line below) — the technical name stays as the header (it's the real term of art,
+worth keeping so the report can be cross-referenced against the source material), but a reader with
+no background in persuasion psychology should never have to guess what "Authority" or "Unity" means
+from the header alone.
 
 For every principle below: what it is, how it actually shows up in a digital product (web or
 app — the manifestations list deliberately isn't URL-specific, since screenshots/video frames from
@@ -19,13 +30,16 @@ without flagging the risk explicitly.
 
 ## 1. Reciprocity
 
+**Plain-language:** Give something real first, and people feel a pull to give back.
+
 **What it is:** People feel obligated to return a favor. Give first — value, information, a small
 gift — and the other side feels a pull to reciprocate (a purchase, a signup, a referral).
 
 **Digital manifestations:** free trial with real functionality (not just a teaser), a genuinely
-useful free tool/calculator/template, free shipping or a first-order discount, a helpful resource
-(guide, checklist) gated behind nothing more than an email, personalized help (live chat that
-actually solves something before asking for anything).
+useful free tool/calculator/template (e.g. a free grader/calculator tool, not just a lead form
+wearing a calculator's skin), free shipping or a first-order discount, a helpful resource (guide,
+checklist) gated behind nothing more than an email, personalized help (live chat that actually
+solves something before asking for anything).
 
 **Check for:**
 - Is anything of real value given before the product asks for something back (money, data,
@@ -40,6 +54,8 @@ reciprocity — it's a bait-and-switch that borrows the psychological pull of re
 honoring the actual exchange. Flag this distinctly from a legitimate free trial with clear terms.
 
 ## 2. Commitment & Consistency
+
+**Plain-language:** Once someone takes even a small step, they want their next choice to match it.
 
 **What it is:** Once someone makes a small commitment (even a trivial one), they feel pressure to
 act consistently with it — and are far more likely to agree to a larger, related ask later.
@@ -64,13 +80,18 @@ user actually chose. Flag both explicitly.
 
 ## 3. Social Proof
 
+**Plain-language:** People look at what others are doing to decide what's normal or safe to do.
+
 **What it is:** People look to others' behavior — especially people similar to them — to decide
 what's correct, particularly under uncertainty.
 
 **Digital manifestations:** review counts and star ratings, "X people bought this," testimonials
 with real names/photos/companies, logos of customers or press mentions, live/recent-activity
-notifications ("someone in [city] just signed up"), user counts ("join 50,000+ teams"), case
-studies, community size indicators.
+notifications ("someone in [city] just signed up," or a real "booked N times in the last 24 hours"
+counter — legitimate only if it reflects real, current activity), user counts ("join 50,000+
+teams"), case studies with attributable, verifiable outcomes, community size indicators. Testimonials
+filtered/segmented by the viewer's own context (industry, company size) carry more weight than a
+generic wall of quotes, since proof from people like the viewer is stronger than proof in general.
 
 **Check for:**
 - Is social proof present at the actual decision point (next to the CTA, on the pricing page), not
@@ -88,6 +109,8 @@ social proof, and say so even if it can't be fully confirmed (note it as "verify
 activity" rather than asserting fraud outright).
 
 ## 4. Liking
+
+**Plain-language:** People say yes more easily to people or brands they feel warmly toward.
 
 **What it is:** People say yes more easily to people/brands they like — driven by similarity,
 compliments, familiarity, and cooperation toward a shared goal.
@@ -113,8 +136,14 @@ templated with no real personalization) — that reads as manufactured liking, n
 
 ## 5. Authority
 
+**Plain-language:** People trust and defer to whoever looks like a credible expert.
+
 **What it is:** People defer to credible expertise, credentials, and legitimate authority —
-especially under uncertainty or when the decision feels technical/high-stakes.
+especially under uncertainty or when the decision feels technical/high-stakes. This is also the
+principle most likely to misfire silently: a confident, professional presentation suppresses a
+viewer's own scrutiny even when nothing behind it has actually been verified — exactly why a claim
+of authority needs to survive a "can this be checked?" test, not just a "does this look credible?"
+one.
 
 **Digital manifestations:** credentials/certifications displayed (security badges, compliance
 logos — SOC 2, GDPR), expert endorsements or contributor bios with real qualifications, media
@@ -137,12 +166,15 @@ real.
 
 ## 6. Scarcity
 
+**Plain-language:** Things feel more valuable the moment they seem limited or about to run out.
+
 **What it is:** People value things more, and decide faster, when they perceive them as limited —
 in supply, in time, or in access.
 
 **Digital manifestations:** low-stock indicators ("only 3 left"), limited-time offers with a real
-countdown, limited-seat/limited-cohort language (courses, beta access), exclusive/invite-only
-framing, seasonal or one-time-only product drops.
+countdown, limited-seat/limited-cohort language (courses, beta access, a genuine waitlist that
+actually gates access rather than being cosmetic), exclusive/invite-only framing, seasonal or
+one-time-only product drops.
 
 **Check for:**
 - Is the scarcity real and verifiable (an actual inventory count, an actual deadline) or asserted
@@ -163,17 +195,22 @@ finding either way.
 
 ## 7. Unity (from *Pre-Suasion*)
 
+**Plain-language:** People say yes fastest to those they see as truly "one of us" — not just similar
+to them, but actually on the same team.
+
 **What it is:** The strongest form of "we," not just similarity ("people like you") — a genuine
 sense of shared, joint identity (family, team, community, a group you belong to, not just resemble).
 Cialdini added this as distinct from Liking and Social Proof because shared *identity* moves people
 more than shared *traits* or *behavior*.
 
-**Digital manifestations:** community features (forums, member directories, shared spaces),
-"member," "insider," or cohort-based language that frames the user as part of a group rather than a
-customer of a vendor, co-creation mechanics (user-generated content, feedback that visibly shapes
-the product), a founding-member/early-adopter identity, language that uses "we"/"us" to include the
-user rather than "we" meaning only the company, shared rituals (a cohort start date, a shared
-onboarding cohort, a members-only event).
+**Digital manifestations:** community features (forums, member directories, shared spaces,
+user-published content other users actually rely on — not a ghost-town gallery), "member,"
+"insider," or cohort-based language that frames the user as part of a group rather than a customer
+of a vendor, co-creation mechanics (user-generated content, feedback that visibly shapes the
+product, a public changelog crediting the specific user/request behind a shipped feature), a
+founding-member/early-adopter identity, language that uses "we"/"us" to include the user rather than
+"we" meaning only the company, shared rituals (a cohort start date, a shared onboarding cohort, a
+members-only event, leaderboards/shout-outs that name real members rather than anonymized ranks).
 
 **Check for:**
 - Does the product ever frame the user as part of a "we," or is the relationship always
@@ -196,4 +233,32 @@ the dark-pattern line above — say so plainly in that finding, not just in a ge
 every principle will be relevant to every product; a principle genuinely absent and not worth
 pursuing for this product (e.g. Scarcity for an enterprise B2B tool with no inventory or time-bound
 offer concept) should be marked "not applicable, here's why" rather than forced into a false
-finding.
+finding. **Whenever a rating comes out Absent, say briefly why** if there's a structural reason (a
+pre-launch product has no reviews yet; a B2B tool with no inventory has no honest scarcity story) —
+a bare "Absent" with no context reads as a gap in the audit, not a gap in the product.
+
+### The genuine-vs-counterfeit gut-check
+
+For every finding, one question cuts through most ambiguity: **is this principle actually,
+verifiably present — or has it been counterfeited to look present?** A real customer quote with a
+checkable name and company is a genuine finding. The same quote with no attribution, or a
+"1,204 people bought this today" counter with no way to verify it reflects real activity, is a
+counterfeit — score it as weak/absent on the merits and flag the counterfeit itself as the
+dark-pattern risk, not as a strength that happens to have an asterisk. A principle that's genuinely
+*available* to the product (real customers exist, real expertise exists) but simply isn't being
+surfaced anywhere is a third case — a missed opportunity, not a violation — and belongs in
+**Opportunities**, not **Dark-pattern risk**.
+
+### A sharper test for a borderline dark-pattern call
+
+When a finding sits close to the line and the call isn't obvious, these questions (adapted from the
+persuasion-ethics literature on dark patterns) help separate honest persuasion from manipulation —
+worth running through mentally rather than eyeballing it:
+- **Truth:** Is the underlying trigger (the stock count, the testimonial, the credential) real?
+- **Regret:** Would someone who found out how this worked, tomorrow, still be glad they said yes?
+- **Transparency:** Does the tactic survive being explained plainly to the person it's aimed at?
+- **Comprehension:** Could a normal user actually state what they just agreed to (price, renewal
+  terms, what they're joining)?
+
+A tactic that fails several of these isn't a matter of taste — call it a dark-pattern risk plainly,
+per the per-principle lines above.
